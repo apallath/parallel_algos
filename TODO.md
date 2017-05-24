@@ -1,4 +1,4 @@
-# Parallelized Programs : TODO List
+# Parallel Programs : TODO List
 
 ## OpenMP (Shared Memory)
 - Histogram (omp_histogram.c)
@@ -16,4 +16,4 @@
 -     Computing levels
 
 ## MPI (Distributed Memory) (*Note: Can use Amazon EC2 MPI Cluster)
-- Hello World (mpi_hello.c)
+- Hello World (mpi_hello.c) [DONE]
