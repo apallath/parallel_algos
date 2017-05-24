@@ -12,8 +12,11 @@
 - Wyllie's Algorithm (List Ranking) (omp_wyllie.c)
 - Forest Root-finding (omp_forroot.c)
 - Euler Tour Technique (omp_euler.c)
--     Computing post-order traversal
--     Computing levels
+    - Computing post-order traversal
+    - Computing levels
 
 ## MPI (Distributed Memory) (*Note: Can use Amazon EC2 MPI Cluster)
 - Hello World (mpi_hello.c) [DONE]
+- Ring (mpi_ring.c) [DONE]
+- Cylic Shift (mpi_cy.c) [DONE]
+- Collectives (mpi_coll.c)
