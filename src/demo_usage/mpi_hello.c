@@ -1,3 +1,8 @@
+/**
+ * MPI Hello World
+ * 
+ * @author Akash Pallath
+ */
 #include<mpi.h>
 #include<stdio.h>
 
