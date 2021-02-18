@@ -11,7 +11,7 @@
 #define REFPI 3.1415926535897932384626433
 
 long double pi(long long nsteps){
-    int i;
+    long long i;
     long double step, sum = 0.0;
 
     step = 1.0 / ((long double) nsteps);

@@ -2,6 +2,9 @@ cmake_minimum_required(VERSION 3.10)
 
 project(ParallelAlgos LANGUAGES C)
 
+# OpenMP
+find_package(OpenMP REQUIRED)
+
 # MPI
 find_package(MPI REQUIRED)
 
@@ -18,9 +21,6 @@ message(STATUS "MPI_C_INCLUDE_PATH : ${MPI_C_INCLUDE_PATH}")
 message(STATUS "MPI_C_LIBRARIES : ${MPI_C_LIBRARIES}")
 
 include_directories(SYSTEM ${MPI_INCLUDE_PATH})
-
-# OpenMP
-find_package(OpenMP REQUIRED)
 
 #########################
 # Usage demos           #
@@ -58,9 +58,14 @@ target_link_libraries(demo_mpi_sg ${MPI_C_LIBRARIES})
 
 add_executable(demo_mpi_pi src/demo_usage/mpi_pi.c)
 target_link_libraries(demo_mpi_pi ${MPI_C_LIBRARIES})
+# Benchmark
+file(COPY src/demo_usage/benchmark_mpi_pi.sh DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
 #########################
-# Dense linear algebra  #
+# Dense linear algebra  #   
 #########################
 
 # To do
+
+# Copy script to run for all benchmarks
+file(COPY src/demo_usage/run_all_benchmarks.sh DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
