@@ -19,7 +19,8 @@ Customize environment variables in `build.sh`. Generate makefiles and build usin
 ## Contents
 
 ### Simple OpenMP and MPI demonstration programs (`demo_usage`)
-- Demonstrations of point-to-point and collective operations (`demo_usage/mpi_*.c`)
+- Demonstrations of point-to-point and collective MPI operations (`demo_usage/mpi_*.c`)
+- Parallel pi computation (via integration) in OpenMP and MPI (`demo_usage/{}_pi.c`)
 
 ### Dense Linear Algebra function implementations (`dense_algebra`)
 - ToDo

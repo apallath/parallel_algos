@@ -20,50 +20,28 @@ int main(int argc, char* argv[]){
         a[i] = (rank + 1) * (i + 1);
     }
 
-    int b[10];
-    
-    //Scan
-    MPI_Scan(&b, &bpref, 10, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
-    len = 0;
-    len += sprintf(outbuf + len, "Prefix Array at Process %d of %d > ", rank, total);
+    int len = 0;
+    char outstr[100];
+
+    len += sprintf(outstr + len, "Array at process %d of %d > ", rank, total);
     for(int i = 0; i < 10; i++){
-        len += sprintf(outbuf + len, " %d ", bpref[i]);    
+        len += sprintf(outstr + len, " %d ", a[i]);    
     }    
-    printf("%s\n", outbuf);
+    printf("%s\n", outstr);
 
-    MPI_Barrier(MPI_COMM_WORLD);
+    int b[10];
 
-    //Demo - Scatter and Gather
-    //First, we generate data
-    int* alldata = NULL;
-    alldata = (int*) malloc(2 * total * sizeof(int));
-    int data[2];
-    if(rank == 0){
-        printf("Data generated at 0 > ");
-        for(int i = 0; i < 2*total; i++){
-            alldata[i] = rand() % 97 ;
-            printf("%d ", alldata[i]);
-        }
-        printf("\n");
-    }        
-    //Now, scatter to all nodes, chunk size 2
-    MPI_Scatter(alldata, 2, MPI_INT, data, 2, MPI_INT, 0, MPI_COMM_WORLD);  
-    //Modify data
-    data[0] *= (rank+1); 
-    data[1] *= (rank+1);
-    //Check
-    printf("Data at [%d] > [%d] [%d]\n", rank, data[0], data[1]);    
-    //Now, gather at last node
-    MPI_Gather(data, 2, MPI_INT, alldata, 2, MPI_INT, total-1, MPI_COMM_WORLD);
-    //Check
-    if(rank == total - 1){
-        printf("Data recieved at %d > ", total - 1);
-        for(int i = 0; i < 2*total; i++){
-            printf("%d ", alldata[i]);
-        }
-        printf("\n");
-    }
+    //Scan
+    //*sendbuf, *recvbuf, count, datatype, op, comm
+    MPI_Scan(&a, &b, 10, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
 
-    //End
+    len = 0;
+
+    len += sprintf(outstr + len, "Prefix array at Process %d of %d > ", rank, total);
+    for(int i = 0; i < 10; i++){
+        len += sprintf(outstr + len, " %d ", b[i]);    
+    }    
+    printf("%s\n", outstr);
+
     MPI_Finalize();
 }

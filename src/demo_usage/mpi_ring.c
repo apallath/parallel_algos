@@ -40,7 +40,7 @@ int main(int argc, char* argv[]){
         //*sendbuf, sendcount, sendtype, dest, sendtag, comm
         MPI_Send(&b, 1, MPI_INT, (rank + 1) % total, 1, MPI_COMM_WORLD);
     }
-    
+
     MPI_Finalize();
 }
         
