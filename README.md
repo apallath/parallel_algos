@@ -1,16 +1,23 @@
 # High performance parallel algorithms
 
-Parallel algorithms implemented using OpenMP and MPI in C.
+Shared and distributed memory parallel algorithms in C. Custom implementations
+of functions using OpenMP and MPI, as well as demonstrations of library calls.
 
 ## Status
 [![Open Issues](https://img.shields.io/github/issues-raw/apallath/parallel_algos)](https://github.com/apallath/parallel_algos/issues)
 [![Closed Issues](https://img.shields.io/github/issues-closed-raw/apallath/parallel_algos)](https://github.com/apallath/parallel_algos/issues)
 
 ## Requirements
-- An MPI installation
+- Intel oneAPI (for Intel compilers, Intel MKL, and Intel MPI.)
+OR
+- An MPI implementation.
+- BLAS, PBLAS, LAPACK and ScaLAPACK implementations.
 
 ## Building from source
-Customize environment variables in `build.sh`. Generate makefiles and build using CMake by running the script:
+Customize environment variables in `build.sh`. At present, this script is
+designed for Intel oneAPI (Intel compilers/MPI/MKL).
+
+Generate makefiles and build using CMake by running the script:
 
 ```sh
 ./build.sh
@@ -23,7 +30,15 @@ Customize environment variables in `build.sh`. Generate makefiles and build usin
 - Parallel pi computation (via integration) in OpenMP and MPI (`demo_usage/{}_pi.c`)
 
 ### Dense Linear Algebra function implementations (`dense_algebra`)
-- ToDo
+Using libraries:
+- Matrix multiplication using BLAS (`dense_algebra/mm_blas.c`)
+- Distributed memory parallel matrix multiplication using PBLAS (`dense_algebra/mm_pblas.c`)
+- LU factorization using LAPACK (`dense_algebra/lu_lapack.c`)
+- LU factorization using ScaLAPACK (`dense_algebra/lu_scalapack.c`)
+
+Custom implementations:
+- Matrix multiplication using OpenMP
+- Matrix multiplication using MPI (SUMMA)
 
 ## To run strong scaling and weak scaling benchmarks
 - Run

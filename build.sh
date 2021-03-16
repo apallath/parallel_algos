@@ -1,10 +1,12 @@
 #!/bin/bash
 
+source /opt/intel/oneapi/setvars.sh --force
+
 # Export enviroment variables
-export CC=gcc
-export CXX=g++
-export MPICC=gcc
-export MPICXX=g++
+export CC=icc
+export CXX=icx
+export MPICC=mpiicc
+export MPICXX=mpiicc
 
 if [ -d "build" ]
 then

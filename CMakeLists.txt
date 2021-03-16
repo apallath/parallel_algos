@@ -1,4 +1,5 @@
-cmake_minimum_required(VERSION 3.10)
+# Intel oneAPI bug fixed in CMake 3.19.3, prior versions won't compile
+cmake_minimum_required(VERSION 3.19.3)
 
 project(ParallelAlgos LANGUAGES C)
 
@@ -21,6 +22,12 @@ message(STATUS "MPI_C_INCLUDE_PATH : ${MPI_C_INCLUDE_PATH}")
 message(STATUS "MPI_C_LIBRARIES : ${MPI_C_LIBRARIES}")
 
 include_directories(SYSTEM ${MPI_INCLUDE_PATH})
+
+# BLAS
+set(BLA_VENDER Intel)
+find_package(BLAS REQUIRED)
+message(STATUS "BLAS_LIBRARIES : ${BLAS_LIBRARIES}")
+include_directories(${BLAS_INCLUDE_DIRS})
 
 #########################
 # Usage demos           #
@@ -65,7 +72,13 @@ file(COPY src/demo_usage/benchmark_mpi_pi.sh DESTINATION ${CMAKE_CURRENT_BINARY_
 # Dense linear algebra  #   
 #########################
 
-# To do
+
+
+add_executable(dense_mm_blas src/dense_algebra/mm_blas.c)
+target_link_libraries(dense_mm_blas ${BLAS_LIBRARIES})
+
+add_executable(dense_mm_pblas src/dense_algebra/mm_pblas.c)
+target_link_libraries(dense_mm_pblas ${BLAS_LIBRARIES} ${MPI_C_LIBRARIES})
 
 # Copy script to run for all benchmarks
 file(COPY src/demo_usage/run_all_benchmarks.sh DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
