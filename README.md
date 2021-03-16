@@ -9,9 +9,6 @@ of functions using OpenMP and MPI, as well as demonstrations of library calls.
 
 ## Requirements
 - Intel oneAPI (for Intel compilers, Intel MKL, and Intel MPI.)
-OR
-- An MPI implementation.
-- BLAS, PBLAS, LAPACK and ScaLAPACK implementations.
 
 ## Building from source
 Customize environment variables in `build.sh`. At present, this script is
