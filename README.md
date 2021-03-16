@@ -26,13 +26,13 @@ Generate makefiles and build using CMake by running the script:
 ## Contents
 
 ### Simple OpenMP and MPI demonstration programs (`demo_usage`)
-- Demonstrations of point-to-point and collective MPI operations (`demo_usage/mpi_*.c`)
-- Parallel pi computation (via integration) in OpenMP and MPI (`demo_usage/{}_pi.c`)
+- Demonstrations of point-to-point and collective MPI operations (`demo_usage/mpi_*.c`) :heavy_check_mark:
+- Parallel pi computation (via integration) in OpenMP and MPI (`demo_usage/{}_pi.c`) :heavy_check_mark:
 
 ### Dense Linear Algebra function implementations (`dense_algebra`)
 Using libraries:
-- Matrix multiplication using BLAS (`dense_algebra/mm_blas.c`)
-- Distributed memory parallel matrix multiplication using PBLAS (`dense_algebra/mm_pblas.c`)
+- Matrix multiplication using BLAS (`dense_algebra/mm_blas.c`) :heavy_check_mark:
+- Distributed memory parallel matrix multiplication using PBLAS (`dense_algebra/mm_pblas.c`) :hammer:
 - LU factorization using LAPACK (`dense_algebra/lu_lapack.c`)
 - LU factorization using ScaLAPACK (`dense_algebra/lu_scalapack.c`)
 
