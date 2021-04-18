@@ -30,12 +30,12 @@ Generate makefiles and build using CMake by running the script:
 Using libraries:
 - Matrix multiplication using BLAS (`dense_algebra/mm_blas.c`) :heavy_check_mark:
 - Distributed memory parallel matrix multiplication using PBLAS (`dense_algebra/mm_pblas.c`) :hammer:
-- LU factorization using LAPACK (`dense_algebra/lu_lapack.c`)
-- LU factorization using ScaLAPACK (`dense_algebra/lu_scalapack.c`)
+- LU factorization using LAPACK (`dense_algebra/lu_lapack.c`) :hammer:
+- LU factorization using ScaLAPACK (`dense_algebra/lu_scalapack.c`) :hammer:
 
 Custom implementations:
-- Matrix multiplication using OpenMP
-- Matrix multiplication using MPI (SUMMA)
+- Matrix multiplication using OpenMP :hammer:
+- Matrix multiplication using MPI (SUMMA) :hammer:
 
 ## To run strong scaling and weak scaling benchmarks
 - Run
